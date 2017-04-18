@@ -22,8 +22,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.nuxeo.runtime.AbstractRuntimeService;
 import org.nuxeo.runtime.api.Framework;
-import org.nuxeo.runtime.osgi.OSGiRuntimeService;
 import org.nuxeo.runtime.test.runner.Features;
 import org.nuxeo.runtime.test.runner.FeaturesRunner;
 import org.nuxeo.runtime.test.runner.RuntimeFeature;
@@ -38,7 +38,7 @@ public class DatadogReporterConfDescriptorTest {
     @Test
     public void hostIsComputedFromNuxeoUrl() throws Exception {
         // Given a nuxeo.url property
-        OSGiRuntimeService runtime = (OSGiRuntimeService) Framework.getRuntime();
+        AbstractRuntimeService runtime = (AbstractRuntimeService) Framework.getRuntime();
         runtime.setProperty("nuxeo.url", "https://nuxeohost.com:8080/nuxeo/");
 
         //When i have a configuration without defined host
